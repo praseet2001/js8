@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Animation Control</title>
+  <style>
+    #animatedImage {
+      width: 200px;
+      position: relative;
+      animation: move 2s linear infinite;
+    }
+
+    @keyframes move {
+      0% {
+        left: 0;
+      }
+      50% {
+        left: 200px;
+      }
+      100% {
+        left: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h2>Animation Control</h2>
+  <img id="animatedImage" src="https://media.tenor.com/xqIo4KC3TKMAAAAi/mariafuma%C3%A7a.gif" alt="Animated Image">
+
+  <button onclick="startAnimation()">Start</button>
+  <button onclick="stopAnimation()">Stop</button>
+
+  <script>
+    let animationInterval;
+    let isAnimationRunning = false;
+
+    function startAnimation() {
+      if (!isAnimationRunning) {
+        const image = document.getElementById('animatedImage');
+        image.style.animationPlayState = 'running';
+        animationInterval = setInterval(function() {
+          image.style.animationPlayState = 'running';
+        }, 2000);
+        isAnimationRunning = true;
+      }
+    }
+
+    function stopAnimation() {
+      const image = document.getElementById('animatedImage');
+      clearInterval(animationInterval);
+      image.style.animationPlayState = 'paused';
+      isAnimationRunning = false;
+    }
+  </script>
+</body>
+</html>
